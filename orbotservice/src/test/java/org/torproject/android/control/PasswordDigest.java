@@ -63,7 +63,7 @@ public class PasswordDigest {
     public static byte[] secretToKey(byte[] secret, byte[] specifier) {
         MessageDigest d;
         try {
-            d = MessageDigest.getInstance("SHA-1");
+            d = MessageDigest.getInstance("SHA-256");
         } catch (NoSuchAlgorithmException ex) {
             throw new RuntimeException("Can't run without sha-1.");
         }
