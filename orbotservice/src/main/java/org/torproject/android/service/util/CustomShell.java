@@ -64,7 +64,20 @@ public class CustomShell extends Shell {
             }**/
 
            if (waitFor) {
-               stdoutGobbler.join();
+               /* ********OpenRefactory Warning********
+			 Possible null pointer Dereference!
+			 Path: 
+				File: CustomShell.java, Line: 38
+					StreamGobbler stdoutGobbler=null;
+					Variable stdoutGobbler is initialized null.
+				File: CustomShell.java, Line: 42
+					stdoutGobbler=new StreamGobbler(process.getInputStream(),stdout);
+					Variable stdoutGobbler is allocated.
+				File: CustomShell.java, Line: 67
+					stdoutGobbler.join();
+					stdoutGobbler is referenced in method invocation.
+			*/
+			stdoutGobbler.join();
                stderrGobbler.join();
            }
 
