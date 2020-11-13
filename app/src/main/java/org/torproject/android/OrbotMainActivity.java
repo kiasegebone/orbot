@@ -1066,7 +1066,18 @@ public class OrbotMainActivity extends AppCompatActivity
 
         if (!TextUtils.isEmpty(torServiceMsg))
         {
-            if (torServiceMsg.contains(TorServiceConstants.LOG_NOTICE_HEADER)) {
+            /* ********OpenRefactory Warning********
+			 Possible null pointer Dereference!
+			 Path: 
+				File: OrbotMainActivity.java, Line: 818
+					updateStatus(null,torStatus);
+					 Information is passed through the method call via null to the formal param torServiceMsg of the method. This later results into a null pointer dereference.
+				File: OrbotMainActivity.java, Line: 1069
+					torServiceMsg.contains(TorServiceConstants.LOG_NOTICE_HEADER)
+					torServiceMsg is referenced in method invocation.
+					The expression is enclosed inside an If statement.
+			*/
+			if (torServiceMsg.contains(TorServiceConstants.LOG_NOTICE_HEADER)) {
                 lblStatus.setText(torServiceMsg);
             }
 
