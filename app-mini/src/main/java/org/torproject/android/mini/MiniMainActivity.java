@@ -1176,7 +1176,20 @@ public class MiniMainActivity extends AppCompatActivity
         if(drawable.getIntrinsicWidth() <= 0 || drawable.getIntrinsicHeight() <= 0) {
             bitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888); // Single color bitmap will be created of 1x1 pixel
         } else {
-            bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+            /* ********OpenRefactory Warning********
+			 Possible null pointer Dereference!
+			 Path: 
+				File: MiniMainActivity.java, Line: 1166
+					Drawable drawable
+					Variable drawable is declared as a formal parameter.
+				File: MiniMainActivity.java, Line: 1169
+					drawable instanceof BitmapDrawable
+					drawable is used in an instanceof test expression. The true path will be taken when drawable will be not null and it will be either of type BitmapDrawable or a subtype of type BitmapDrawable.
+				File: MiniMainActivity.java, Line: 1179
+					bitmap=Bitmap.createBitmap(drawable.getIntrinsicWidth(),drawable.getIntrinsicHeight(),Bitmap.Config.ARGB_8888);
+					drawable is referenced in method invocation.
+			*/
+			bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
         }
 
         Canvas canvas = new Canvas(bitmap);
