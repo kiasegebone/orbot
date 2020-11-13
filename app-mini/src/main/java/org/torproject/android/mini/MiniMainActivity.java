@@ -788,7 +788,18 @@ public class MiniMainActivity extends AppCompatActivity
 
         if (!TextUtils.isEmpty(torServiceMsg))
         {
-            if (torServiceMsg.contains(TorServiceConstants.LOG_NOTICE_HEADER)) {
+            /* ********OpenRefactory Warning********
+			 Possible null pointer Dereference!
+			 Path: 
+				File: MiniMainActivity.java, Line: 526
+					updateStatus(null,torStatus);
+					 Information is passed through the method call via null to the formal param torServiceMsg of the method. This later results into a null pointer dereference.
+				File: MiniMainActivity.java, Line: 791
+					torServiceMsg.contains(TorServiceConstants.LOG_NOTICE_HEADER)
+					torServiceMsg is referenced in method invocation.
+					The expression is enclosed inside an If statement.
+			*/
+			if (torServiceMsg.contains(TorServiceConstants.LOG_NOTICE_HEADER)) {
            //     lblStatus.setText(torServiceMsg);
             }
 
