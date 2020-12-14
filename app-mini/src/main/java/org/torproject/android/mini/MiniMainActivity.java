@@ -1180,7 +1180,20 @@ public class MiniMainActivity extends AppCompatActivity
         }
 
         Canvas canvas = new Canvas(bitmap);
-        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        /* ********OpenRefactory Warning********
+		 Possible null pointer Dereference!
+		 Path: 
+			File: MiniMainActivity.java, Line: 1166
+				Drawable drawable
+				Variable drawable is declared as a formal parameter.
+			File: MiniMainActivity.java, Line: 1169
+				drawable instanceof BitmapDrawable
+				drawable is used in an instanceof test expression. The true path will be taken when drawable will be not null and it will be either of type BitmapDrawable or a subtype of type BitmapDrawable.
+			File: MiniMainActivity.java, Line: 1183
+				drawable.setBounds(0,0,canvas.getWidth(),canvas.getHeight());
+				drawable is referenced in method invocation.
+		*/
+		drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
         drawable.draw(canvas);
         return bitmap;
     }
